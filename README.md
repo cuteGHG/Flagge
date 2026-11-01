@@ -6,7 +6,7 @@ seinem Namen in der Tablist und optional im Display-Namen anzeigt.
 ## Verwendung
 
 1. `./gradlew build` ausführen.
-2. `build/libs/Flagge-1.0.0.jar` in den `plugins`-Ordner kopieren.
+2. `build/libs/Flagge-1.0.1.jar` in den `plugins`-Ordner kopieren.
 3. Server starten.
 4. Anzeige und Geo-IP-Endpunkt in `plugins/Flagge/config.yml` anpassen.
 
