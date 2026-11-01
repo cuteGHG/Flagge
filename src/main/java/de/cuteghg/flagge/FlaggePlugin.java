@@ -115,17 +115,21 @@ public final class FlaggePlugin extends JavaPlugin implements Listener, CommandE
 
     private String countryFlag(String countryCode) {
         if (countryCode == null || countryCode.length() != 2 || "??".equals(countryCode)) {
-            return "🏳";
+            return "\uE000";
         }
 
         String code = countryCode.toUpperCase();
-        return new String(Character.toChars(0x1F1E6 + code.charAt(0) - 'A'))
-                + new String(Character.toChars(0x1F1E6 + code.charAt(1) - 'A'));
+        if (code.charAt(0) < 'A' || code.charAt(0) > 'Z'
+                || code.charAt(1) < 'A' || code.charAt(1) > 'Z') {
+            return "\uE000";
+        }
+        int index = (code.charAt(0) - 'A') * 26 + code.charAt(1) - 'A';
+        return String.valueOf((char) (0xE000 + index));
     }
 
     String getFlag(Player player) {
         CachedCountry cached = countries.get(player.getUniqueId());
-        return cached == null ? "🏳" : countryFlag(cached.country().countryCode());
+        return cached == null ? "\uE000" : countryFlag(cached.country().countryCode());
     }
 
     String getCountryCode(Player player) {
