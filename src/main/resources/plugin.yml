@@ -4,6 +4,8 @@ main: de.cuteghg.flagge.FlaggePlugin
 api-version: '1.21'
 author: cuteGHG
 description: Zeigt das Herkunftsland eines Spielers neben seinem Namen an.
+softdepend:
+  - PlaceholderAPI
 
 commands:
   flaggereload:

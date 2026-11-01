@@ -2,6 +2,7 @@ package de.cuteghg.flagge;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
+import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -31,6 +32,9 @@ public final class FlaggePlugin extends JavaPlugin implements Listener, CommandE
         loadSettings();
         getServer().getPluginManager().registerEvents(this, this);
         getCommand("flaggereload").setExecutor(this);
+        if (getServer().getPluginManager().isPluginEnabled("PlaceholderAPI")) {
+            new FlagPlaceholderExpansion(this).register();
+        }
     }
 
     private void loadSettings() {
@@ -112,6 +116,51 @@ public final class FlaggePlugin extends JavaPlugin implements Listener, CommandE
     private String countryFlag(String countryCode) {
         if (countryCode == null || countryCode.length() != 2 || "??".equals(countryCode)) {
             return "🏳";
+        }
+
+        String getFlag(Player player) {
+            CachedCountry cached = countries.get(player.getUniqueId());
+            return cached == null ? "🏳" : countryFlag(cached.country().countryCode());
+        }
+
+        String getCountryCode(Player player) {
+            CachedCountry cached = countries.get(player.getUniqueId());
+            return cached == null ? "??" : cached.country().countryCode();
+        }
+
+        private static final class FlagPlaceholderExpansion extends PlaceholderExpansion {
+            private final FlaggePlugin plugin;
+
+            private FlagPlaceholderExpansion(FlaggePlugin plugin) {
+                this.plugin = plugin;
+            }
+
+            @Override
+            public String getIdentifier() {
+                return "flagge";
+            }
+
+            @Override
+            public String getAuthor() {
+                return "cuteGHG";
+            }
+
+            @Override
+            public String getVersion() {
+                return plugin.getDescription().getVersion();
+            }
+
+            @Override
+            public String onPlaceholderRequest(Player player, String params) {
+                if (player == null) {
+                    return "";
+                }
+                return switch (params.toLowerCase()) {
+                    case "flag" -> plugin.getFlag(player);
+                    case "country_code" -> plugin.getCountryCode(player);
+                    default -> null;
+                };
+            }
         }
         String code = countryCode.toUpperCase();
         return new String(Character.toChars(0x1F1E6 + code.charAt(0) - 'A'))
