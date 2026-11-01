@@ -88,9 +88,8 @@ public final class FlaggePlugin extends JavaPlugin implements Listener, CommandE
     }
 
     private void applyCountry(Player player, PlayerCountry country) {
-        String flag = format("flag-format", player, country);
         String namePath = country.equals(PlayerCountry.UNKNOWN) ? "unknown-format" : "name-format";
-        String name = format(namePath, player, country).replace("%flag%", flag);
+        String name = format(namePath, player, country);
         Component component = serializer.deserialize(name);
 
         if (getConfig().getBoolean("tablist.enabled", true)) {
