@@ -1,0 +1,17 @@
+name: Flagge
+version: ${version}
+main: de.cuteghg.flagge.FlaggePlugin
+api-version: '1.21'
+author: cuteGHG
+description: Zeigt das Herkunftsland eines Spielers neben seinem Namen an.
+
+commands:
+  flaggereload:
+    description: Lädt die Flagge-Konfiguration neu.
+    usage: /flaggereload
+    permission: flagge.reload
+
+permissions:
+  flagge.reload:
+    description: Erlaubt das Neuladen der Flagge-Konfiguration.
+    default: op
