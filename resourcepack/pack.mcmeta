@@ -1,6 +1,7 @@
 {
   "pack": {
-    "pack_format": 69,
-    "description": "Flagge - Pixel-Laenderflaggen fuer Paper 1.21.11"
+    "description": "Flagge - Pixel-Laenderflaggen fuer Paper 1.21.11",
+    "min_format": 88,
+    "max_format": 88
   }
 }
