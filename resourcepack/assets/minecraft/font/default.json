@@ -36,7 +36,23 @@
     },
     {
       "type": "reference",
-      "id": "minecraft:uniform"
+      "id": "minecraft:ascii"
+    },
+    {
+      "type": "reference",
+      "id": "minecraft:nonlatin_europe"
+    },
+    {
+      "type": "reference",
+      "id": "minecraft:accent"
+    },
+    {
+      "type": "reference",
+      "id": "minecraft:jp"
+    },
+    {
+      "type": "reference",
+      "id": "minecraft:unicode_page_00"
     }
   ]
 }
