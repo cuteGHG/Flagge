@@ -1,21 +1,3 @@
-# Anzeige vor dem Spielernamen. Verfügbare Platzhalter:
-# %player%, %country%, %country_code%, %flag%
-name-format: "%flag% %player%"
-
-# Wird genutzt, wenn das Land noch nicht geladen wurde oder nicht ermittelt werden konnte.
-unknown-format: "? %player%"
-
-# Echte Länderflagge als Unicode-Flaggenzeichen.
-flag-format: "%flag%"
-
-# Anzeige in der Tablist.
-tablist:
-  enabled: true
-
-# Anzeige über dem Spieler bzw. in Nametags. Dafür wird der Display Name gesetzt.
-display-name:
-  enabled: true
-
 geolocation:
   # ip-api.com wird nur beim ersten Join einer IP und danach aus dem Cache genutzt.
   endpoint: "http://ip-api.com/json/%ip%?fields=status,country,countryCode"
